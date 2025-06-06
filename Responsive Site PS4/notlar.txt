@@ -1,0 +1,10 @@
+align items
+justify content
+outline 
+position
+overflow 
+boxsizing
+display none:yok ediyor
+z-index
+transition
+transform(translate)

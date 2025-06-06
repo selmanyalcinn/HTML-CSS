@@ -1,0 +1,165 @@
+<html>
+    <head>
+            <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+            <script src="https://unpkg.com/moralis/dist/moralis.js"></script>
+            <link rel="stylesheet" href="../CSS/main.css" />
+    </head>
+    <body id="body" class="body" onload="onload()">
+        <header class="header">
+            <span style="font-size:30px;cursor:pointer;margin-left: 1%;" onclick="openNav()">&#9776;</span>
+            <a href="index.html" class="a"><h2 style="display: inline-block;margin-left: 0.5%;">SocialX Marketplace</h2></a>
+            <a onclick="login()" class="button glow-button" target="_blank" style="margin-left:60%;">Connect Wallet</a> 
+         </header>
+        <div >
+            <h2 style="margin-top: 3%;text-align: center;">My İtems</h2>
+            <h2 style="margin-top: 1%;margin-left: 3%;">Art Works</h2>
+        </div>
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="myitems.html">My İtems</a>
+            <a href="collected.html">Collected</a>
+            <a href="mint.html">Create NFTs</a>
+        </div>
+         
+    </body>
+    <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+
+        Moralis.initialize("xeYLWci5Sv8KBG5Ipp2Z36A1QLHq6uw80Zl7juog"); // Application id from moralis.io
+		Moralis.serverURL = "https://5zm13lhfi3sm.usemoralis.com:2053/server"; //Server url from moralis.io
+
+        async function buy(btn){
+            objectId=btn.id;
+            sessionStorage.setItem("objectID",objectId);
+            sessionStorage.setItem("Type",btn.title);
+            console.log(objectId);
+            location.replace("NFT.html")
+        }
+
+
+
+        async function onload(){
+            console.log("page is loaded");
+            accounts=await window.ethereum.request({method:"eth_requestAccounts"}).catch((err)=>{
+            console.log(err.code);
+            })
+
+            const Monster = Moralis.Object.extend("Artwork_NFTs");
+            const query = new Moralis.Query(Monster);
+            query.equalTo("Creator",accounts[0]);
+            const results = await query.find();
+            // Do something with the returned Moralis.Object values
+            for (let i = 0; i < results.length; i++) {
+            const object = results[i];
+            const Name=object.get("Name");
+            const Price=object.get("Price");
+            const Description=object.get("Description");
+            const Metadata=object.get("Metadata");
+            var newElement=document.createElement("div"); 
+            newElement.setAttribute("style","width:23%;height:80vh;background-color:white;display:inline-block;margin-left:20px;margin-top:20px;border-radius:15px;text-align:center;");
+            document.body.appendChild(newElement);
+            var image=document.createElement("img");
+            var header=document.createElement("h2");
+            var div=document.createElement("div");
+            var _name=document.createElement("h3");
+            var _price=document.createElement("h3");
+            var _description=document.createElement("h3");
+            var button=document.createElement("h3");
+            image.setAttribute("style","width:250px;height:250px;margin-top:15%;border-radius:8px;");
+            image.setAttribute("src",Metadata.url());
+            _name.setAttribute("style","color:black;display:inline-block;font-family: 'Oswald', sans-serif;");
+            _price.setAttribute("style","color:black;display:inline-block;margin-left:10%;font-family: 'Oswald', sans-serif;");
+            button.setAttribute("class","button glow-button");
+            button.setAttribute("style","width:30%;height:25px;display:block;margin-left:23%;");
+            button.setAttribute("title","Artwork");
+            button.setAttribute("id",object.id);
+            button.setAttribute("onclick","buy(this)");
+            header.innerHTML=Name;
+           _name.innerHTML=Name;
+           _price.innerHTML=Price+" ETH";
+            button.innerHTML="See";
+            newElement.appendChild(image);
+            newElement.appendChild(_name);
+            newElement.appendChild(_price);
+            newElement.appendChild(button);
+            console.log(results.length-1);
+            if(i==results.length-1){
+                setTimeout(loadSocial,1000);
+            }           
+            }
+        }
+
+        async function loadSocial(){
+            console.log("page is loaded");
+            const Monster = Moralis.Object.extend("SocialContent_NFTs");
+            const query = new Moralis.Query(Monster);
+            const results = await query.find();
+            // Do something with the returned Moralis.Object values
+            for (let i = 0; i < results.length; i++) {
+            if(i==0){
+                console.log("i=0");
+                var h2=document.createElement("h2");
+                var body=document.getElementById("body");
+                h2.setAttribute("style","margin-top:3%;margin-left:3%;");
+                h2.innerHTML="Social Contents";
+                body.appendChild(h2);
+            }
+            const object = results[i];
+            const Name=object.get("Name");
+            const Price=object.get("Price");
+            const Description=object.get("Description");
+            const Metadata=object.get("Link");
+            console.log(Metadata);
+            var newElement=document.createElement("div"); 
+            newElement.setAttribute("style","width:48%;height:80vh;background-color:white;display:inline-block;margin-left:20px;margin-top:20px;border-radius:15px;text-align:center;");
+            document.body.appendChild(newElement);
+            var iframe=document.createElement("iframe");
+            var header=document.createElement("h2");
+            var div=document.createElement("div");
+            var _name=document.createElement("h3");
+            var _price=document.createElement("h3");
+            var _description=document.createElement("h3");
+            var button=document.createElement("h3");
+            iframe.setAttribute("style","width:90%;height:55%;margin-top:5%;border-radius:8px;");
+            iframe.setAttribute("src","https://www.youtube.com/embed/"+Metadata);
+            _name.setAttribute("style","color:black;display:inline-block;font-family: 'Oswald', sans-serif;");
+            _price.setAttribute("style","color:black;display:inline-block;margin-left:10%;font-family: 'Oswald', sans-serif;");
+            button.setAttribute("class","button glow-button");
+            button.setAttribute("style","width:30%;height:25px;display:block;margin-left:30%;margin-top:5%");
+            button.setAttribute("id",object.id);
+            button.setAttribute("title","Social Content");
+            button.setAttribute("onclick","buy(this)");
+            header.innerHTML=Name;
+           _name.innerHTML=Name;
+           _price.innerHTML=Price+" ETH";
+            button.innerHTML="See";
+            newElement.appendChild(iframe);
+            newElement.appendChild(_name);
+            newElement.appendChild(_price);
+            newElement.appendChild(button);
+        }
+    }
+        async function login(){
+			console.log("login clicked");
+			var user = await Moralis.Web3.authenticate();
+            accounts=await window.ethereum.request({method:"eth_requestAccounts"}).catch((err)=>{
+            console.log(err.code);
+            })
+			if(user){
+				console.log(user);
+				user.set("nickname","VITALIK");
+				user.set("fav_color","blue");
+				user.save();
+			}
+            console.log(accounts);
+		}
+
+
+    </script>
+</html>

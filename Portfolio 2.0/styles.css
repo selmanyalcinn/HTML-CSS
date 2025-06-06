@@ -1,0 +1,221 @@
+* {
+  margin: 0; /* Tüm elemanların dış boşluklarını sıfırlar */
+  padding: 0; /* Tüm elemanların iç boşluklarını sıfırlar */
+  box-sizing: border-box; /* Kenar hesaplamalarını kontrol eder */
+  font-family: "Roboto", sans-serif;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%; /* Sayfanın tamamını kaplamasını sağlıyoruz */
+  min-height: 100%;
+}
+.Header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background-color: #1c1c1d; /* Şeffaf siyah arka plan */
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  width: 100%;
+}
+.Header h2 {
+  margin: 0;
+  font-size: 24px;
+  letter-spacing: 2px;
+}
+.HeaderDiv {
+  display: flex;
+  gap: 20px;
+}
+.HeaderDiv a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 18px;
+  padding-bottom: 5px;
+  transition: all 0.3s ease-in-out;
+}
+/* Alt çizgi efektli linkler */
+.HeaderDiv a:hover {
+  color: #66ff66; /* Link hover rengi */
+  text-decoration: none;
+}
+/* Mobile uyumlu tasarım */
+
+.about {
+  background-color: #1c1c1d;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 10px;
+}
+.aboutSection {
+  width: 90%;
+  background-color: #1c1c1d;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  min-height: 100vh;
+}
+.textArea {
+  width: 60%;
+  background-color: #1c1c1d;
+}
+.photoArea {
+  width: 40%;
+  background-color: #1c1c1d;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.photoArea img {
+  border-radius: 50%;
+  height: 300px;
+}
+.aboutSection a {
+  color: lime;
+  text-decoration: none;
+}
+.aboutSection h1 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.news {
+  display: flex;
+  flex-direction: column;
+  background-color: #1c1c1d;
+  width: 60%;
+}
+.news a {
+  color: lime;
+  text-decoration: none;
+}
+.news h3 {
+  margin-top: 8px;
+}
+.aboutSub {
+  display: flex;
+  flex-direction: row;
+}
+.Showcase {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.projects {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  background-color: #1c1c1d;
+  width: 100%;
+  margin-top: 10px;
+  align-self: center;
+  min-height: 100vh;
+}
+.projects a {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+}
+.project {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 32%;
+  padding: 1%;
+  background-color: #212529;
+  border: 2px;
+  border-color: gray;
+  margin-bottom: 10px;
+  padding: 5px;
+  margin-left: 10px;
+  justify-content: space-evenly;
+  color: white;
+}
+.project img {
+  height: 200px;
+  align-self: center;
+  justify-self: center;
+  margin-bottom: 10px;
+}
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full screen height */
+}
+
+.loader {
+  border: 8px solid gray; /* Light grey */
+  border-top: 8px solid lime; /* Blue */
+  border-radius: 50%;
+  width: 60px; /* Size of the spinner */
+  height: 60px; /* Size of the spinner */
+  animation: spin 2s linear infinite; /* Spin animation */
+}
+.imgArea {
+  display: flex;
+  flex-direction: row;
+  width: 70%;
+}
+.projectDetails {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 768px) {
+  .Header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 15px;
+  }
+  .Header h2 {
+    font-size: 22px;
+  }
+  .HeaderDiv {
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  .project {
+    color: #66ff66;
+  }
+  .projects {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+@media (max-width: 1400px) {
+  .project {
+    width: 44%;
+  }
+}
+
+@media (max-width: 1050px) {
+  .project {
+    width: 90%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 10px;
+    height: 22vh;
+  }
+  .projects {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}

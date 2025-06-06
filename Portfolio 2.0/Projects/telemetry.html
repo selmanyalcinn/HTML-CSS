@@ -1,0 +1,60 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      /* Media query yalnızca bu sayfada geçerli olacak */
+      @media (max-width: 1050px) {
+        .imgArea img{
+          height: 400px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="about">
+      <div class="Header">
+        <h2>Selman Yalçın</h2>
+        <div class="HeaderDiv">
+          <a href="../index.html" id="about">About</a>
+          <a style="color: lime" href="../projects.html" id="projects">Projects</a>
+          <a  href="../code.html" id="about">Code</a>
+        </div>  
+      </div>
+      <div class="aboutSection">
+        <h2>E-Vehicle Telemetry</h2>
+        <div class="projectDetails">
+            <div class="imgArea">
+                <img style="height: auto;margin-top: 10px;max-width: 100%;" src="../Images/telemetry.png" />
+            </div>
+            <div style="margin-top: 20px;width: 70%;"><h3>
+                At Bursa Science High School, we worked on an electric car project, and our team regularly participated in TÜBİTAK e-vehicle races. 
+                The project required a telemetry system to track crucial data such as car speed, battery temperature, battery percentage, and more.
+            </h3>
+            <h3 style="margin-top: 20px;">
+                We developed a solution by integrating a website with NodeMCU modules installed in the e-vehicle, connecting them to Firebase. 
+                The car's data was sent to the Firebase database, and we fetched it to display on the website in real-time.
+            </h3>
+            <h3 style="margin-top: 20px;">
+                Additionally, the website's control panel allowed users to start or stop the car remotely. 
+                It also provided an option to download the car's data history as a JSON file for further analysis.
+                The entire website was designed and developed by me. 
+                This was not only a great team project but also one of my first experiences stepping into backend development.
+            </h3>
+            </div>
+        </div>
+        </div>
+     
+      
+      </div>
+    </div>
+  </body>
+</html>

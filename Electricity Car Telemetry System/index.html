@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="./CSS/UI.css" />
+    <link rel="stylesheet" type="text/css" href="./CSS/GasPedalPercentage.css" />
+    <link rel="stylesheet" type="text/css" href="./CSS/Battery.css" />
+    <link rel="stylesheet" type="text/css" href="./CSS/SpeedGauge.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/charts.css/dist/charts.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script nonce="undefined" src="https://cdn.zingchart.com/zingchart.min.js"></script>
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Play:700,400' type='text/css'>
+    <script type="text/javascript" src="http://iop.io/js/vendor/d3.v3.min.js"></script>
+    <script type="text/javascript" src="http://iop.io/js/vendor/polymer/PointerEvents/pointerevents.js"></script>
+    <script type="text/javascript" src="http://iop.io/js/vendor/polymer/PointerGestures/pointergestures.js"></script>
+    <script type="text/javascript" src="http://iop.io/js/iopctrl.js"></script>
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Play:700,400' type='text/css'>
+    <script type="text/javascript" src="http://iop.io/js/vendor/d3.v3.min.js"></script>
+    <script type="text/javascript" src="http://iop.io/js/vendor/polymer/PointerEvents/pointerevents.js"></script>
+    <script type="text/javascript" src="http://iop.io/js/vendor/polymer/PointerGestures/pointergestures.js"></script>
+    <script type="text/javascript" src="http://iop.io/js/iopctrl.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>Document</title>
+</head>
+
+<body class="Main" onload="GetDatas()">
+
+    <div class="Header">
+        <h1 class="Batterytext">Naima Telemetri</h1>
+        <button class="Button" onclick="onDownload()">Verileri İndir</button>
+    </div>
+    <div class="Container">
+        <h1 class="Batterytext">Araç Hızı ve Kontrolü</h1>
+        <div class="CarSpeed">
+
+            <div class="SpeedGauge">
+                <h1 class="Batterytext">Hızınız</h1>
+                <div>
+                    <span id="speedometer"></span>
+                </div>
+            </div>
+
+            <div class="MyCar">
+                <h1 class="Title">Aracım</h1>
+                <img class="CarImage" src="./Images/Car.png" />
+                <div class="Buttons">
+                    <button onclick="Run()" class="Button">Aracımı Çalıştır</button>
+                    <button onclick="Stop()" class="Button" style="margin-left: 5%">
+                        Aracımı Durdur
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+
+
+        <div class="Motor">
+            <h1 class="Batterytext">Motor Sıcaklığı ve Direksiyon Yönü</h1>
+            <div class="Motor2">
+                <div class="Direction">
+                    <h1 class="Title">Motor Sıcaklığı</h1>
+                    <div style="display:flex;flex-direction:row">
+                        <h1 id="MotorHeatText" class="ValTexts">21°</h1>
+                        <i class="fa fa-thermometer"
+                            style="font-size:80px;color:#00ff43;justify-self: center;align-self:center;margin-left: 8%;"></i>
+                    </div>
+                </div>
+                <div class="Direction">
+                    <h1 class="Title">Direksiyon Yönü</h1>
+                    <h1 id="MotorHeatText" class="ValTexts">18.04°</h1>
+                </div>
+            </div>
+        </div>
+        <div class="Motor">
+            <h1 class="Batterytext">Pedala Basma ve Batarya Sıcaklığı</h1>
+            <div class="Motor2">
+                <div class="Direction">
+                    <h1 class="Title">Pedala Basma Oranı</h1>
+                    <div class="pedal">
+                        <div class="pedal__body">
+                            <div class="pedal__fill"></div>
+                            <div class="pedal__cover"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="Direction">
+                    <h1 class="Title">Batarya Sıcaklıkları</h1>
+                    <div
+                        style="display:flex;flex-direction:row;padding-left:2.5%;padding-right:2.5%;align-items:center;justify-content: center;">
+                        <div class="BatteryHeat">
+                            <h2 id="BatteryHeat1">20°</h2>
+                            <h2 style="margin-top: 2.5%;">Batarya1</h2>
+                        </div>
+                        <div class="BatteryHeat">
+                            <h2 id="BatteryHeat2">20°</h2>
+                            <h2 style="margin-top: 2.5%;">Batarya2</h2>
+                        </div>
+                        <div class="BatteryHeat">
+                            <h2 id="BatteryHeat3">20°</h2>
+                            <h2 style="margin-top: 2.5%;">Batarya3</h2>
+                        </div>
+                        <div class="BatteryHeat">
+                            <h2 id="BatteryHeat4">20°</h2>
+                            <h2 style="margin-top: 2.5%;">Batarya4</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="Motor">
+            <h1 class="Batterytext">Batarya Gerilimi ve Doluluk Oranı</h1>
+            <div class="Motor2">
+                <div class="Direction">
+                    <h1 class="Title">Batarya Gerilimi</h1>
+                    <div style="display:flex;flex-direction:row">
+                        <h1 id="VoltageText" class="ValTexts">21V</h1>
+                        <i style="  font-size: 90px;
+                        color: #00ff43;
+                        justify-self: center;
+                        align-self: center;
+                        margin-left: 8%;" class="fa fa-bolt"></i>
+
+                    </div>
+                </div>
+            </div>
+            <div class="DirectionBattery" style="align-self: center;">
+                <section class="battery">
+                    <div class="battery__card">
+                        <div class="battery__data">
+                            <p class="battery__text">Batarya</p>
+                            <h1 id="BatteryPercentText" class="battery__percentage">
+                                50%
+                            </h1>
+                            <p id="BatteryLifeText" class="battery__text">Kalan Kullanım Süresi:1s</p>
+
+                            <p class="battery__status">
+                                Düşük Pil <i class="ri-plug-line"></i>
+                            </p>
+                        </div>
+
+                        <div class="battery__pill">
+                            <div class="battery__level">
+                                <div class="battery__liquid"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+
+    </div>
+    <script>
+
+        //Firebase Tanımlama
+        const firebaseConfig = {
+            apiKey: "AIzaSyCN9nF7kUOa284shHefTAlxBBfNY-2BB2c",
+            authDomain: "telemetri-30761.firebaseapp.com",
+            projectId: "telemetri-30761",
+            storageBucket: "telemetri-30761.appspot.com",
+            messagingSenderId: "686886715536",
+            appId: "1:686886715536:web:700dd75476dfb71bffd815",
+            measurementId: "G-QTMRN377BZ"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const database = firebase.database();
+
+        //Araç Durdur
+        const Stop = () => {
+            console.log("Sstopping Car...");
+            database.ref("Datas").update({
+                Car: false,
+            });
+        }
+
+        //Araç Çalıştır
+        const Run = () => {
+            console.log("Running Car...");
+            database.ref("Datas").update({
+                Car: true,
+            });
+        }
+        //Anlık Veri Çekme
+        const GetDatas = () => {
+            setInterval(function () {
+                const timestamp = Date.now().toString()
+                database.ref("realtime").on("value", function (snapshot) {
+                    console.log("Snapshot", snapshot.val())
+                    document.getElementById("VoltageText").innerHTML = (snapshot.val().batteryVoltage).toString() + "V"
+                    document.getElementById("MotorHeatText").innerHTML = (snapshot.val().motorTemperature).toString() + "°"
+                    document.getElementById("BatteryPercentText").innerHTML = (snapshot.val().batteryPercentage).toString() + "%"
+                    document.getElementById("BatteryLifeText").innerHTML = "Kalan Kullanım Süresi: " + (snapshot.val().batteryLife).toString() + "s"
+                    document.getElementById("BatteryHeat1").innerHTML = (snapshot.val().batteryTemperature.battery1).toString() + "°"
+                    document.getElementById("BatteryHeat2").innerHTML = (snapshot.val().batteryTemperature.battery2).toString() + "°"
+                    document.getElementById("BatteryHeat3").innerHTML = (snapshot.val().batteryTemperature.battery3).toString() + "°"
+                    document.getElementById("BatteryHeat4").innerHTML = (snapshot.val().batteryTemperature.battery4).toString() + "°"
+                    gauge.value(snapshot.val().vehicleSpeed);
+                    const gaugeElement = document.querySelector(".pedal");
+                    function setGaugeValue(gauge, value) {
+                        if (value < 0 || value > 1) {
+                            return;
+                        }
+                        gauge.querySelector(".pedal__fill").style.transform = `rotate(${value / 2
+                            }turn)`;
+                        gauge.querySelector(".pedal__cover").textContent = `${Math.round(
+                            value * 100
+                        )}%`;
+
+                    }
+                    setGaugeValue(gaugeElement, snapshot.val().gasPedal / 100);
+                    ///BataryaSet
+                    initBattery()
+
+                    function initBattery() {
+                        const batteryLiquid = document.querySelector('.battery__liquid'),
+                            batteryStatus = document.querySelector('.battery__status'),
+                            batteryPercentage = document.querySelector('.battery__percentage')
+
+                        navigator.getBattery().then((batt) => {
+                            updateBattery = () => {
+                                /* 1. We update the number level of the battery */
+                                let level = Math.floor(batt.level * snapshot.val().batteryPercentage)
+                                batteryPercentage.innerHTML = level + '%'
+
+                                /* 2. We update the background level of the battery */
+                                batteryLiquid.style.height = `${parseInt(batt.level * snapshot.val().batteryPercentage)}%`
+
+                                /* 3. We validate full battery, low battery and if it is charging or not */
+                                if (level == 100) { /* We validate if the battery is full */
+                                    batteryStatus.innerHTML = `Dolu <i class="ri-battery-2-fill green-color"></i>`
+                                    batteryLiquid.style.height = '103%' /* To hide the ellipse */
+                                }
+                                else if (level <= 20) { /* We validate if the battery is low */
+                                    batteryStatus.innerHTML = `Düşük Pil <i class="ri-plug-line animated-red"></i>`
+                                }
+                                else if (batt.charging) { /* We validate if the battery is charging */
+                                    batteryStatus.innerHTML = `Pil Durumu İyi... <i class="ri-flashlight-line animated-green"></i>`
+                                }
+                                else { /* If it's not loading, don't show anything. */
+                                    batteryStatus.innerHTML = ''
+                                }
+
+                                /* 4. We change the colors of the battery and remove the other colors */
+                                if (level <= 20) {
+                                    batteryLiquid.classList.add('gradient-color-red')
+                                    batteryLiquid.classList.remove('gradient-color-orange', 'gradient-color-yellow', 'gradient-color-green')
+                                }
+                                else if (level <= 40) {
+                                    batteryLiquid.classList.add('gradient-color-orange')
+                                    batteryLiquid.classList.remove('gradient-color-red', 'gradient-color-yellow', 'gradient-color-green')
+                                }
+                                else if (level <= 80) {
+                                    batteryLiquid.classList.add('gradient-color-yellow')
+                                    batteryLiquid.classList.remove('gradient-color-red', 'gradient-color-orange', 'gradient-color-green')
+                                }
+                                else {
+                                    batteryLiquid.classList.add('gradient-color-green')
+                                    batteryLiquid.classList.remove('gradient-color-red', 'gradient-color-orange', 'gradient-color-yellow')
+                                }
+                            }
+                            updateBattery()
+
+                            /* 5. Battery status events */
+                            batt.addEventListener('chargingchange', () => { updateBattery() })
+                            batt.addEventListener('levelchange', () => { updateBattery() })
+                        })
+                    }
+
+
+                })
+            }, 1000)
+            console.log(Date.now())
+        }
+
+        /////Hız Göstergesi
+
+        var svg = d3.select("#speedometer")
+            .append("svg:svg")
+            .attr("width", 1000000)
+            .attr("height", "100vh")
+
+        var gauge = iopctrl.arcslider()
+            .radius(120)
+            .events(false)
+            .indicator(iopctrl.defaultGaugeIndicator);
+        gauge.axis().orient("in")
+            .normalize(true)
+            .ticks(12)
+            .tickSubdivide(3)
+            .tickSize(10, 8, 10)
+            .tickPadding(5)
+            .scale(d3.scale.linear()
+                .domain([0, 160])
+                .range([-3 * Math.PI / 4, 3 * Math.PI / 4]));
+
+        var segDisplay = iopctrl.segdisplay()
+            .width(80)
+            .digitCount(6)
+            .negative(false)
+            .decimals(0);
+
+        svg.append("g")
+            .attr("class", "segdisplay")
+            .attr("transform", "translate(130, 200)")
+            .call(segDisplay);
+
+        svg.append("g")
+            .attr("class", "gauge")
+            .call(gauge);
+
+        segDisplay.value(56749);
+        gauge.value(0);
+
+        //Verileri İndir
+        let jsonData = {
+            UsersData: {
+                bYJ4Cm9bkTUB4ZmfeoSDZL0dPLF3: {
+                    readings: {},
+                },
+            },
+        };
+
+        function download(content, fileName, contentType) {
+            const a = document.createElement("a");
+            const file = new Blob([content], { type: contentType });
+            a.href = URL.createObjectURL(file);
+            a.download = fileName;
+            a.click();
+        }
+        async function onDownload() {
+            database.ref("UsersData/").on("value", function (snapshot) {
+                const data = snapshot.val();
+                console.log("Veriler", data);
+                jsonData.UsersData = data;
+                download(JSON.stringify(jsonData), "Telemetri.json", "text/plain");
+            });
+        }
+
+        //Pedal
+        const gaugeElement = document.querySelector(".pedal");
+
+        function setGaugeValue(gauge, value) {
+            if (value < 0 || value > 1) {
+                return;
+            }
+
+            gauge.querySelector(".pedal__fill").style.transform = `rotate(${value / 2
+                }turn)`;
+            gauge.querySelector(".pedal__cover").textContent = `${Math.round(
+                value * 100
+            )}%`;
+        }
+
+        setGaugeValue(gaugeElement, 0.4);
+
+        //Batarya Seviye
+
+        initBattery()
+
+        function initBattery() {
+            const batteryLiquid = document.querySelector('.battery__liquid'),
+                batteryStatus = document.querySelector('.battery__status'),
+                batteryPercentage = document.querySelector('.battery__percentage')
+
+            navigator.getBattery().then((batt) => {
+                updateBattery = () => {
+                    /* 1. We update the number level of the battery */
+                    let level = Math.floor(batt.level * 20)
+                    batteryPercentage.innerHTML = level + '%'
+
+                    /* 2. We update the background level of the battery */
+                    batteryLiquid.style.height = `${parseInt(batt.level * 20)}%`
+
+                    /* 3. We validate full battery, low battery and if it is charging or not */
+                    if (level == 100) { /* We validate if the battery is full */
+                        batteryStatus.innerHTML = `Dolu <i class="ri-battery-2-fill green-color"></i>`
+                        batteryLiquid.style.height = '103%' /* To hide the ellipse */
+                    }
+                    else if (level <= 20 & !batt.charging) { /* We validate if the battery is low */
+                        batteryStatus.innerHTML = `Düşük Pil <i class="ri-plug-line animated-red"></i>`
+                    }
+                    else if (batt.charging) { /* We validate if the battery is charging */
+                        batteryStatus.innerHTML = `Kullanılıyor... <i class="ri-flashlight-line animated-green"></i>`
+                    }
+                    else { /* If it's not loading, don't show anything. */
+                        batteryStatus.innerHTML = ''
+                    }
+
+                    /* 4. We change the colors of the battery and remove the other colors */
+                    if (level <= 20) {
+                        batteryLiquid.classList.add('gradient-color-red')
+                        batteryLiquid.classList.remove('gradient-color-orange', 'gradient-color-yellow', 'gradient-color-green')
+                    }
+                    else if (level <= 40) {
+                        batteryLiquid.classList.add('gradient-color-orange')
+                        batteryLiquid.classList.remove('gradient-color-red', 'gradient-color-yellow', 'gradient-color-green')
+                    }
+                    else if (level <= 80) {
+                        batteryLiquid.classList.add('gradient-color-yellow')
+                        batteryLiquid.classList.remove('gradient-color-red', 'gradient-color-orange', 'gradient-color-green')
+                    }
+                    else {
+                        batteryLiquid.classList.add('gradient-color-green')
+                        batteryLiquid.classList.remove('gradient-color-red', 'gradient-color-orange', 'gradient-color-yellow')
+                    }
+                }
+                updateBattery()
+
+                /* 5. Battery status events */
+                batt.addEventListener('chargingchange', () => { updateBattery() })
+                batt.addEventListener('levelchange', () => { updateBattery() })
+            })
+        }
+
+
+    </script>
+
+</body>
+
+</html>

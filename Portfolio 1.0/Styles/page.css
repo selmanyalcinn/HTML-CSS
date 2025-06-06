@@ -1,0 +1,69 @@
+.Title {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding-left: 3%;
+}
+.ProjectPhoto2 {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  width: 100%;
+  padding-left: 3%;
+}
+.Photo2 {
+  width: 100%;
+  margin-left: 3%;
+  background-color: red;
+}
+.Article {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  border-radius: 20px;
+  padding: 2%;
+  color: black;
+  width: 70%;
+  background-color: white;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+.SocialArea2 {
+  height: 80px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.video {
+  width: 25%;
+  height: auto;
+}
+
+.Title p {
+  color: gray;
+}
+
+@media only screen and (max-width: 1000px) {
+  .Article {
+    width: 90%;
+  }
+  .Photo2 {
+    width: 95%;
+  }
+  .Title {
+    flex-direction: column;
+  }
+  .SocialArea2 {
+    justify-content: flex-start;
+  }
+  .video {
+    width: 90%;
+    height: auto;
+  }
+}

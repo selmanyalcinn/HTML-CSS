@@ -1,0 +1,281 @@
+.body{
+    margin: 0%;
+    padding: 0%;
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Shippori Antique', sans-serif;
+    background-color:#e6e1e1;
+}
+.header{
+    background-color: white;
+    color: black;
+    height: 13.5vh;
+    width: 100%;
+    display: inline-block;
+}
+.a{
+    text-decoration: none;
+    color: black;
+}
+.button {
+   text-decoration: none;
+   color: rgba(255, 255, 255, 0.8);
+   background: rgb(9, 89, 194);
+   padding: 15px 40px;
+   border-radius: 4px;
+   font-weight: normal;
+   text-transform: uppercase;
+   transition: all 0.2s ease-in-out;
+   margin-top: 5%;
+   margin-left: 43%;
+}
+
+.glow-button:hover {
+color: rgba(255, 255, 255, 1);
+box-shadow: 0 5px 15px rgba(9, 89, 194);
+}
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: white;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+    .sidenav a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 25px;
+        color: black;
+        display: block;
+        transition: 0.3s;
+    }
+
+        .sidenav a:hover {
+            color: black;
+        }
+
+    .sidenav .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+    }
+
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+
+        .sidenav a {
+            font-size: 18px;
+        }
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+}
+.myh2{
+	margin-left: 5%;
+	margin-top: 3%;
+	font-family: 'Oswald', sans-serif;
+}
+.myinput{
+  width: 90%;
+  display: block;
+  margin-left: 5%;
+  margin-top: 3%;
+  height: 10vh;
+  border-radius: 10px;
+  border-color: gray;
+  border-width: thin;
+  font-size: 18px;
+}
+        .body{
+            margin: 0%;
+            padding: 0%;
+            font-family: 'Roboto', sans-serif;
+            font-family: 'Shippori Antique', sans-serif;
+            background-color:#e6e1e1;
+        }
+        .header{
+            background-color: white;
+            color: black;
+            height: 13.5vh;
+            width: 100%;
+        }
+        .a{
+            text-decoration: none;
+            color: black;
+        }
+        .button {
+           text-decoration: none;
+           color: rgba(255, 255, 255, 0.8);
+           background: rgb(9, 89, 194);
+           padding: 15px 40px;
+           border-radius: 4px;
+           font-weight: normal;
+           text-transform: uppercase;
+           transition: all 0.2s ease-in-out;
+           margin-top: 5%;
+           margin-left: 43%;
+        }
+
+.glow-button:hover {
+  color: rgba(255, 255, 255, 1);
+  box-shadow: 0 5px 15px rgba(9, 89, 194);
+}
+.sidenav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: white;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+            .sidenav a {
+                padding: 8px 8px 8px 32px;
+                text-decoration: none;
+                font-size: 25px;
+                color: black;
+                display: block;
+                transition: 0.3s;
+            }
+
+                .sidenav a:hover {
+                    color: black;
+                }
+
+            .sidenav .closebtn {
+                position: absolute;
+                top: 0;
+                right: 25px;
+                font-size: 36px;
+                margin-left: 50px;
+            }
+
+        @media screen and (max-height: 450px) {
+            .sidenav {
+                padding-top: 15px;
+            }
+
+                .sidenav a {
+                    font-size: 18px;
+                }
+            * {
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+            }
+        }
+		.selector{
+			display: inline-block;
+			width: 50%;
+			height: 3%;
+			margin-left: 5%;
+			border-radius: 2%;
+
+		}
+        .body{
+            margin: 0%;
+            padding: 0%;
+            font-family: 'Roboto', sans-serif;
+            font-family: 'Shippori Antique', sans-serif;
+            background-color:#e6e1e1;
+        }
+        .header{
+            background-color: white;
+            color: black;
+            height: 13.5vh;
+            width: 100%;
+        }
+        .a{
+            text-decoration: none;
+            color: black;
+        }
+        .button {
+           text-decoration: none;
+           color: rgba(255, 255, 255, 0.8);
+           background: rgb(9, 89, 194);
+           padding: 15px 40px;
+           border-radius: 4px;
+           font-weight: normal;
+           text-transform: uppercase;
+           transition: all 0.2s ease-in-out;
+           margin-top: 5%;
+           margin-left: 43%;
+        }
+
+.glow-button:hover {
+  color: rgba(255, 255, 255, 1);
+  box-shadow: 0 5px 15px rgba(9, 89, 194);
+}
+.sidenav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: white;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+            .sidenav a {
+                padding: 8px 8px 8px 32px;
+                text-decoration: none;
+                font-size: 25px;
+                color: black;
+                display: block;
+                transition: 0.3s;
+            }
+
+                .sidenav a:hover {
+                    color: black;
+                }
+
+            .sidenav .closebtn {
+                position: absolute;
+                top: 0;
+                right: 25px;
+                font-size: 36px;
+                margin-left: 50px;
+            }
+
+        @media screen and (max-height: 450px) {
+            .sidenav {
+                padding-top: 15px;
+            }
+
+                .sidenav a {
+                    font-size: 18px;
+                }
+            * {
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+            }
+        }
+        .NFTdiv{
+            width: 95%;
+            margin-left: 2.5%;
+            background-color: white;
+            color: black;
+            border-radius: 2%;
+            height: 80vh;
+            margin-top:3%;
+            display: flex;
+        }

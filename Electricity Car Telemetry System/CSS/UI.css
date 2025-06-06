@@ -1,0 +1,368 @@
+.Main {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: gray;
+}
+.CarSpeed {
+  background-color: black;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding-top: 3%;
+  padding-bottom: 3%;
+  justify-content: space-evenly;
+}
+.MyCar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 20px;
+  background-color: #222;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding-bottom: 3%;
+  padding-top: 3%;
+}
+.MyCar h1 {
+  color: #00ff43;
+}
+.Buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.Battery {
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.Battery2 {
+  display: flex;
+  flex-direction: row;
+  background-color: black;
+  align-items: center;
+}
+.Batterytext {
+  color: #00ff43;
+  align-self: center;
+  justify-self: center;
+  margin-top: 2%;
+}
+.SpeedGauge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 20px;
+  background: #222;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding-bottom: 3%;
+  padding-top: 3%;
+  width: 45%;
+}
+.Container {
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  padding-bottom: 100px;
+  padding-top: 100px;
+}
+.GasPedal {
+  background-color: black;
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.GasPedal h1 {
+  color: #00ff43;
+  align-self: center;
+  justify-self: center;
+  margin-top: 2%;
+}
+.Charts {
+  display: flex;
+  flex-direction: row;
+  margin-top: 2%;
+}
+.CarImage {
+  width: 82%;
+  height: 58%;
+  align-self: center;
+  justify-self: center;
+  margin-bottom: 2%;
+}
+.Motor {
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 100%;
+}
+.Direction {
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  background-color: #222;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+
+  border-radius: 20px;
+  color: #00ff43;
+  justify-content: space-evenly;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+.Motor2 {
+  display: flex;
+  margin-top: 2%;
+  flex-direction: column;
+  background-color: black;
+  justify-content: space-evenly;
+  width: 100%;
+  align-items: center;
+}
+.CarStatus {
+  background-color: black;
+  width: 100%;
+  padding-left: 3%;
+  padding-right: 3%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.CarStatus2 {
+  display: flex;
+  margin-top: 2%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 20px;
+  background-color: #222;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding-bottom: 3%;
+  padding-top: 3%;
+  width: 22%;
+}
+.Header {
+  display: flex;
+  flex-direction: row;
+  background-color: #222;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5%;
+  top: 0;
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+}
+.Button {
+  border: none;
+  border-radius: 20px;
+  background: #00ff43;
+  color: white;
+  width: 200px;
+  font-size: larger;
+  font-weight: bolder;
+  height: 50px;
+}
+.BatteryHeat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 2.5%;
+  border: solid;
+  justify-content: space-evenly;
+  border-radius: 20px;
+  font-size: 15;
+  padding: 3%;
+}
+
+.DirectionVoltage {
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  background-color: #222;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+  height: 58vh;
+  border-radius: 20px;
+  color: #00ff43;
+  justify-content: space-evenly;
+
+  width: 750px;
+}
+
+.DirectionBattery {
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  background-color: #222;
+
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+  height: 58vh;
+  border-radius: 20px;
+  color: #00ff43;
+  justify-content: space-evenly;
+}
+
+#Gauge {
+  height: 500px;
+  width: 500px;
+}
+
+.unselectable {
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* css formats for the gauge */
+.gauge .domain {
+  stroke-width: 2px;
+  stroke: #fff;
+}
+
+.gauge .tick line {
+  stroke: #fff;
+  stroke-width: 2px;
+}
+
+.gauge line {
+  stroke: #fff;
+}
+
+.gauge .arc,
+.gauge .cursor {
+  opacity: 0;
+}
+
+.gauge .major {
+  fill: #fff;
+  font-size: 20px;
+  font-family: "Play", verdana, sans-serif;
+  font-weight: normal;
+}
+
+.gauge .indicator {
+  stroke: #ee3311;
+  fill: #000;
+  stroke-width: 4px;
+}
+
+/* css formats for the segment display */
+.segdisplay .on {
+  fill: #00ffff;
+}
+
+.segdisplay .off {
+  fill: #00ffff;
+  opacity: 0.15;
+}
+.Title {
+  font-size: 27px;
+  margin-bottom: 40px;
+}
+
+.ValTexts {
+  font-size: 110px;
+}
+
+.Icon {
+  font-size: 80px;
+  color: #00ff43;
+  justify-self: center;
+  align-self: center;
+  margin-left: 8%;
+}
+
+.DirectionBattery {
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  background-color: #222;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  border-radius: 20px;
+  color: white;
+  justify-content: space-evenly;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+@media only screen and (max-width: 1500px) {
+  .Motor2 {
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+  .Direction {
+    margin-top: "5%";
+    width: 80%;
+    align-self: center;
+    justify-content: center;
+    margin: 5%;
+  }
+  .CarSpeed {
+    flex-direction: column;
+  }
+  .Battery2 {
+    flex-direction: column;
+  }
+  .SpeedGauge {
+    width: 80%;
+    align-self: center;
+    justify-self: center;
+    margin: 5%;
+  }
+  .MyCar {
+    width: 80%;
+    align-self: center;
+    justify-self: center;
+    margin: 5%;
+  }
+  .Button {
+    width: 100px;
+  }
+  .DirectionVoltage {
+    width: 80%;
+  }
+  .Batterytext {
+    font-size: 20px;
+  }
+  .BatteryHeat {
+    font-size: 8px;
+  }
+  .ValTexts {
+    font-size: 80px;
+  }
+  .Icon {
+    font-size: 80px;
+  }
+}
